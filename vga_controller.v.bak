@@ -1,0 +1,7 @@
+module vga_controller(
+input clk, // 25 Mhz clock
+    output vga_h_sync,
+    output vga_v_sync,
+    output reg inDisplayArea,
+    output reg [9:0] CounterX,
+);

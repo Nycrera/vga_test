@@ -1,0 +1,4 @@
+module verilog_test(clk,r,g,b,h_sync,v_sync);
+
+
+endmodule

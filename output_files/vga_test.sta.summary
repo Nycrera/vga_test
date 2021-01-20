@@ -1,0 +1,77 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'vga_controller:comb_3|vga_clk'
+Slack : -2.271
+TNS   : -37.953
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -0.851
+TNS   : -0.851
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : 0.703
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'vga_controller:comb_3|vga_clk'
+Slack : 0.743
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -4.487
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'vga_controller:comb_3|vga_clk'
+Slack : -1.487
+TNS   : -32.714
+
+Type  : Slow 1200mV 0C Model Setup 'vga_controller:comb_3|vga_clk'
+Slack : -2.099
+TNS   : -33.851
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -0.753
+TNS   : -0.753
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : 0.642
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'vga_controller:comb_3|vga_clk'
+Slack : 0.690
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -4.487
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'vga_controller:comb_3|vga_clk'
+Slack : -1.487
+TNS   : -32.714
+
+Type  : Fast 1200mV 0C Model Setup 'vga_controller:comb_3|vga_clk'
+Slack : -0.394
+TNS   : -4.289
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -0.020
+TNS   : -0.020
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : 0.234
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'vga_controller:comb_3|vga_clk'
+Slack : 0.297
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -4.047
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'vga_controller:comb_3|vga_clk'
+Slack : -1.000
+TNS   : -22.000
+
+------------------------------------------------------------

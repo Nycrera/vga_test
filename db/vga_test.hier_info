@@ -1,0 +1,69 @@
+|vga_test
+clk => clk.IN1
+rgbOut[0] << vga_controller:comb_3.port3
+rgbOut[1] << vga_controller:comb_3.port3
+rgbOut[2] << vga_controller:comb_3.port3
+h_sync << vga_controller:comb_3.port1
+v_sync << vga_controller:comb_3.port2
+rst => rst.IN1
+
+
+|vga_test|vga_controller:comb_3
+clk => vga_clk.CLK
+vga_hsync <= hvsync:comb_9.port1
+vga_vsync <= hvsync:comb_9.port2
+rgbOut[0] <= rgbOut.DB_MAX_OUTPUT_PORT_TYPE
+rgbOut[1] <= rgbOut.DB_MAX_OUTPUT_PORT_TYPE
+rgbOut[2] <= rgbOut.DB_MAX_OUTPUT_PORT_TYPE
+rst => vga_clk.OUTPUTSELECT
+
+
+|vga_test|vga_controller:comb_3|hvsync:comb_9
+vga_clk => inDisplayArea~reg0.CLK
+vga_clk => vga_VS.CLK
+vga_clk => vga_HS.CLK
+vga_clk => CounterY[0]~reg0.CLK
+vga_clk => CounterY[1]~reg0.CLK
+vga_clk => CounterY[2]~reg0.CLK
+vga_clk => CounterY[3]~reg0.CLK
+vga_clk => CounterY[4]~reg0.CLK
+vga_clk => CounterY[5]~reg0.CLK
+vga_clk => CounterY[6]~reg0.CLK
+vga_clk => CounterY[7]~reg0.CLK
+vga_clk => CounterY[8]~reg0.CLK
+vga_clk => CounterY[9]~reg0.CLK
+vga_clk => CounterX[0]~reg0.CLK
+vga_clk => CounterX[1]~reg0.CLK
+vga_clk => CounterX[2]~reg0.CLK
+vga_clk => CounterX[3]~reg0.CLK
+vga_clk => CounterX[4]~reg0.CLK
+vga_clk => CounterX[5]~reg0.CLK
+vga_clk => CounterX[6]~reg0.CLK
+vga_clk => CounterX[7]~reg0.CLK
+vga_clk => CounterX[8]~reg0.CLK
+vga_clk => CounterX[9]~reg0.CLK
+vga_hsync <= vga_HS.DB_MAX_OUTPUT_PORT_TYPE
+vga_vsync <= vga_VS.DB_MAX_OUTPUT_PORT_TYPE
+inDisplayArea <= inDisplayArea~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterX[0] <= CounterX[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterX[1] <= CounterX[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterX[2] <= CounterX[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterX[3] <= CounterX[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterX[4] <= CounterX[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterX[5] <= CounterX[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterX[6] <= CounterX[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterX[7] <= CounterX[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterX[8] <= CounterX[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterX[9] <= CounterX[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterY[0] <= CounterY[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterY[1] <= CounterY[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterY[2] <= CounterY[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterY[3] <= CounterY[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterY[4] <= CounterY[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterY[5] <= CounterY[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterY[6] <= CounterY[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterY[7] <= CounterY[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterY[8] <= CounterY[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CounterY[9] <= CounterY[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
