@@ -1,24 +1,40 @@
 |vga_test
 clk => clk.IN1
-rgbOut[0] << vga_controller:comb_3.port3
-rgbOut[1] << vga_controller:comb_3.port3
-rgbOut[2] << vga_controller:comb_3.port3
-h_sync << vga_controller:comb_3.port1
-v_sync << vga_controller:comb_3.port2
+rgbOut[0] << vga_controller:comb_4.port4
+rgbOut[1] << vga_controller:comb_4.port4
+rgbOut[2] << vga_controller:comb_4.port4
+h_sync << vga_controller:comb_4.port2
+v_sync << vga_controller:comb_4.port3
 rst => rst.IN1
 
 
-|vga_test|vga_controller:comb_3
-clk => vga_clk.CLK
-vga_hsync <= hvsync:comb_9.port1
-vga_vsync <= hvsync:comb_9.port2
+|vga_test|vga_controller:comb_4
+clk => ~NO_FANOUT~
+vga_clk => vga_clk.IN1
+vga_hsync <= hsync_delayed3.DB_MAX_OUTPUT_PORT_TYPE
+vga_vsync <= vsync_delayed3.DB_MAX_OUTPUT_PORT_TYPE
 rgbOut[0] <= rgbOut.DB_MAX_OUTPUT_PORT_TYPE
-rgbOut[1] <= rgbOut.DB_MAX_OUTPUT_PORT_TYPE
-rgbOut[2] <= rgbOut.DB_MAX_OUTPUT_PORT_TYPE
-rst => vga_clk.OUTPUTSELECT
+rgbOut[1] <= <GND>
+rgbOut[2] <= <GND>
+rst => ~NO_FANOUT~
+addr[0] <= addr[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[1] <= addr[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[2] <= addr[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[3] <= addr[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[4] <= addr[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[5] <= addr[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[6] <= addr[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[7] <= addr[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[8] <= addr[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[9] <= addr[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[10] <= addr[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[11] <= addr[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[12] <= addr[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+addr[13] <= addr[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data => rgbOut.IN1
 
 
-|vga_test|vga_controller:comb_3|hvsync:comb_9
+|vga_test|vga_controller:comb_4|hvsync:comb_3
 vga_clk => inDisplayArea~reg0.CLK
 vga_clk => vga_VS.CLK
 vga_clk => vga_HS.CLK
