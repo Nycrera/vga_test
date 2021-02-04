@@ -5,8 +5,8 @@ module vga_controller(
     output vga_vsync,
 	 output [2:0] rgbOut,
 	 input rst, // Clock Reset
-	 output reg [13:0] addr,
-	 input wire data
+	 output [13:0] addr,
+	 input data
 );
 	 wire vga_hsync_original;
 	 wire vga_vsync_original;
@@ -19,20 +19,11 @@ module vga_controller(
 	 hvsync(vga_clk,vga_hsync_original,vga_vsync_original,inDisplayArea_original,PosX,PosY);
 	 
 	 // Drawing Logic goes here
-	 wire glyph_x,glyph_y;
-	 assign glyph_x = PosX[2:0];
-	 assign glyph_y = PosY[3:0];
-	 
-	 always @(posedge vga_clk)
-	 begin
-	 addr <= (8'b01000100 << 7) + glyph_x + (glyph_y << 3);
-	 end
-	 
-	 initial begin
-	 addr <= 14'b00000000000000;
-	 end
+	 assign addr  = 14'b10001000000000 + PosX[2:0] + {PosY[3:0], 3'b000};
 	 
 	 assign rgbOut[0] = data & inDisplayArea;
+	 assign rgbOut[1] = rgbOut[0];
+	 assign rgbOut[2] = rgbOut[0];
 	 /*
 	 assign rgbOut[2] = ((PosX > 0) & (PosX < 300) & (PosY > 0) & (PosY < 300))?1:0;
 	 assign rgbOut[1] = ((PosX > 200) & (PosX < 400) & (PosY > 150) & (PosY < 350)?1:0);
@@ -64,7 +55,7 @@ module vga_controller(
 	 inDisplayArea_delayed3 <= inDisplayArea_delayed2;
 	 end
 	 
-	 assign vga_vsync = vsync_delayed3;
-	 assign vga_hsync = hsync_delayed3;
-	 assign inDisplayArea = inDisplayArea_delayed3;
+	 assign vga_vsync = vsync_delayed2;
+	 assign vga_hsync = hsync_delayed2;
+	 assign inDisplayArea = inDisplayArea_delayed2;
 	 endmodule

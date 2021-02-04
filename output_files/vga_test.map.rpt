@@ -1,5 +1,5 @@
 Analysis & Synthesis report for vga_test
-Thu Feb 04 20:05:27 2021
+Thu Feb 04 20:52:07 2021
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -48,18 +48,18 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Feb 04 20:05:27 2021      ;
+; Analysis & Synthesis Status        ; Successful - Thu Feb 04 20:52:07 2021      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; vga_test                                   ;
 ; Top-level Entity Name              ; vga_test                                   ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 57                                         ;
-;     Total combinational functions  ; 46                                         ;
-;     Dedicated logic registers      ; 37                                         ;
-; Total registers                    ; 37                                         ;
+; Total logic elements               ; 49                                         ;
+;     Total combinational functions  ; 45                                         ;
+;     Dedicated logic registers      ; 30                                         ;
+; Total registers                    ; 30                                         ;
 ; Total pins                         ; 7                                          ;
 ; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 2,048                                      ;
+; Total memory bits                  ; 128                                        ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
 ; Total PLLs                         ; 0                                          ;
 +------------------------------------+--------------------------------------------+
@@ -193,29 +193,29 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+---------+
 ; Resource                                    ; Usage   ;
 +---------------------------------------------+---------+
-; Estimated Total logic elements              ; 57      ;
+; Estimated Total logic elements              ; 49      ;
 ;                                             ;         ;
-; Total combinational functions               ; 46      ;
+; Total combinational functions               ; 45      ;
 ; Logic element usage by number of LUT inputs ;         ;
-;     -- 4 input functions                    ; 13      ;
+;     -- 4 input functions                    ; 12      ;
 ;     -- 3 input functions                    ; 0       ;
 ;     -- <=2 input functions                  ; 33      ;
 ;                                             ;         ;
 ; Logic elements by mode                      ;         ;
-;     -- normal mode                          ; 28      ;
+;     -- normal mode                          ; 27      ;
 ;     -- arithmetic mode                      ; 18      ;
 ;                                             ;         ;
-; Total registers                             ; 37      ;
-;     -- Dedicated logic registers            ; 37      ;
+; Total registers                             ; 30      ;
+;     -- Dedicated logic registers            ; 30      ;
 ;     -- I/O registers                        ; 0       ;
 ;                                             ;         ;
 ; I/O pins                                    ; 7       ;
-; Total memory bits                           ; 2048    ;
+; Total memory bits                           ; 128     ;
 ; Embedded Multiplier 9-bit elements          ; 0       ;
 ; Maximum fan-out node                        ; vga_clk ;
-; Maximum fan-out                             ; 36      ;
-; Total fan-out                               ; 215     ;
-; Average fan-out                             ; 2.17    ;
+; Maximum fan-out                             ; 30      ;
+; Total fan-out                               ; 200     ;
+; Average fan-out                             ; 2.22    ;
 +---------------------------------------------+---------+
 
 
@@ -224,10 +224,10 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                           ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+--------------+
-; |vga_test                              ; 46 (2)            ; 37 (1)       ; 2048        ; 0            ; 0       ; 0         ; 7    ; 0            ; |vga_test                                                     ; work         ;
-;    |altsyncram:mem_rtl_0|              ; 0 (0)             ; 1 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|altsyncram:mem_rtl_0                                ; work         ;
-;       |altsyncram_d871:auto_generated| ; 0 (0)             ; 1 (1)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|altsyncram:mem_rtl_0|altsyncram_d871:auto_generated ; work         ;
-;    |vga_controller:comb_4|             ; 44 (3)            ; 35 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|vga_controller:comb_4                               ; work         ;
+; |vga_test                              ; 45 (1)            ; 30 (1)       ; 128         ; 0            ; 0       ; 0         ; 7    ; 0            ; |vga_test                                                     ; work         ;
+;    |altsyncram:mem_rtl_0|              ; 0 (0)             ; 0 (0)        ; 128         ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|altsyncram:mem_rtl_0                                ; work         ;
+;       |altsyncram_d871:auto_generated| ; 0 (0)             ; 0 (0)        ; 128         ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|altsyncram:mem_rtl_0|altsyncram_d871:auto_generated ; work         ;
+;    |vga_controller:comb_4|             ; 44 (3)            ; 29 (6)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|vga_controller:comb_4                               ; work         ;
 ;       |hvsync:comb_3|                  ; 41 (41)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|vga_controller:comb_4|hvsync:comb_3                 ; work         ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -242,15 +242,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+--------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                       ;
-+---------------------------------------------+--------------------------------------------+
-; Register name                               ; Reason for Removal                         ;
-+---------------------------------------------+--------------------------------------------+
-; vga_controller:comb_4|addr[1,2,4..8,10..12] ; Stuck at GND due to stuck port data_in     ;
-; vga_controller:comb_4|addr[9]               ; Merged with vga_controller:comb_4|addr[13] ;
-; Total Number of Removed Registers = 11      ;                                            ;
-+---------------------------------------------+--------------------------------------------+
++---------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                            ;
++----------------------------------------------------------------------+----------------------------------------+
+; Register name                                                        ; Reason for Removal                     ;
++----------------------------------------------------------------------+----------------------------------------+
+; altsyncram:mem_rtl_0|altsyncram_d871:auto_generated|address_reg_a[0] ; Stuck at VCC due to stuck port data_in ;
+; Total Number of Removed Registers = 1                                ;                                        ;
++----------------------------------------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -258,7 +257,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 37    ;
+; Total registers                              ; 30    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -372,8 +371,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port           ; Type   ; Severity ; Details                                                                             ;
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
-; CounterX[9..1] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; CounterY[9..1] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; CounterX[9..3] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; CounterY[9..4] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
@@ -392,7 +391,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Feb 04 20:05:26 2021
+    Info: Processing started: Thu Feb 04 20:52:05 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off vga_test -c vga_test
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file vga_test.v
@@ -409,9 +408,9 @@ Warning (10030): Net "mem.waddr_a" at vga_test.v(12) has no driver or initial va
 Warning (10030): Net "mem.data_a" at vga_test.v(12) has no driver or initial value, using a default initial value '0'
 Warning (10030): Net "mem.we_a" at vga_test.v(12) has no driver or initial value, using a default initial value '0'
 Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:comb_4"
-Warning (10230): Verilog HDL assignment warning at vga_controller.v(23): truncated value with size 3 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at vga_controller.v(24): truncated value with size 4 to match size of target (1)
-Warning (10034): Output port "rgbOut[2..1]" at vga_controller.v(6) has no driver
+Warning (10036): Verilog HDL or VHDL warning at vga_controller.v(35): object "hsync_delayed3" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at vga_controller.v(38): object "vsync_delayed3" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at vga_controller.v(41): object "inDisplayArea_delayed3" assigned a value but never read
 Info (12128): Elaborating entity "hvsync" for hierarchy "vga_controller:comb_4|hvsync:comb_3"
 Warning (10230): Verilog HDL assignment warning at hvsync.v(19): truncated value with size 32 to match size of target (10)
 Warning (10230): Verilog HDL assignment warning at hvsync.v(28): truncated value with size 32 to match size of target (10)
@@ -445,22 +444,22 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/deco
     Info (12023): Found entity 1: decode_c8a
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_smb.tdf
     Info (12023): Found entity 1: mux_smb
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "rgbOut[1]" is stuck at GND
-    Warning (13410): Pin "rgbOut[2]" is stuck at GND
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "altsyncram:mem_rtl_0|altsyncram_d871:auto_generated|ram_block1a0"
 Info (286030): Timing-Driven Synthesis is running
-Info (17036): Removed 3 MSB VCC or GND address nodes from RAM block "altsyncram:mem_rtl_0|altsyncram_d871:auto_generated|ALTSYNCRAM"
+Info (17036): Removed 6 MSB VCC or GND address nodes from RAM block "altsyncram:mem_rtl_0|altsyncram_d871:auto_generated|ALTSYNCRAM"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 66 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 57 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 5 output pins
-    Info (21061): Implemented 57 logic cells
-    Info (21064): Implemented 2 RAM segments
+    Info (21061): Implemented 49 logic cells
+    Info (21064): Implemented 1 RAM segments
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 15 warnings
     Info: Peak virtual memory: 4637 megabytes
-    Info: Processing ended: Thu Feb 04 20:05:27 2021
-    Info: Elapsed time: 00:00:01
+    Info: Processing ended: Thu Feb 04 20:52:07 2021
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 
