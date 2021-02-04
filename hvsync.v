@@ -7,7 +7,7 @@ module hvsync(
     output reg [9:0] CounterY
 );
 
-reg vga_HS, vga_VS;
+	 reg vga_HS, vga_VS;
 
     wire CounterXmaxed = (CounterX == 800); // 16 + 48 + 96 + 640
     wire CounterYmaxed = (CounterY == 525); // 10 + 2 + 33 + 480

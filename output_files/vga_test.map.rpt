@@ -1,5 +1,5 @@
 Analysis & Synthesis report for vga_test
-Thu Feb 04 20:52:07 2021
+Thu Feb 04 21:05:08 2021
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -20,7 +20,7 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
  12. Source assignments for altsyncram:mem_rtl_0|altsyncram_d871:auto_generated
  13. Parameter Settings for Inferred Entity Instance: altsyncram:mem_rtl_0
  14. altsyncram Parameter Settings by Entity Instance
- 15. Port Connectivity Checks: "vga_controller:comb_4|hvsync:comb_3"
+ 15. Port Connectivity Checks: "vga_controller:comb_4|hvsync:comb_9"
  16. Elapsed Time Per Partition
  17. Analysis & Synthesis Messages
 
@@ -48,15 +48,15 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Feb 04 20:52:07 2021      ;
+; Analysis & Synthesis Status        ; Successful - Thu Feb 04 21:05:08 2021      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; vga_test                                   ;
 ; Top-level Entity Name              ; vga_test                                   ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 49                                         ;
-;     Total combinational functions  ; 45                                         ;
-;     Dedicated logic registers      ; 30                                         ;
-; Total registers                    ; 30                                         ;
+; Total logic elements               ; 43                                         ;
+;     Total combinational functions  ; 43                                         ;
+;     Dedicated logic registers      ; 24                                         ;
+; Total registers                    ; 24                                         ;
 ; Total pins                         ; 7                                          ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 128                                        ;
@@ -188,35 +188,35 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary           ;
-+---------------------------------------------+---------+
-; Resource                                    ; Usage   ;
-+---------------------------------------------+---------+
-; Estimated Total logic elements              ; 49      ;
-;                                             ;         ;
-; Total combinational functions               ; 45      ;
-; Logic element usage by number of LUT inputs ;         ;
-;     -- 4 input functions                    ; 12      ;
-;     -- 3 input functions                    ; 0       ;
-;     -- <=2 input functions                  ; 33      ;
-;                                             ;         ;
-; Logic elements by mode                      ;         ;
-;     -- normal mode                          ; 27      ;
-;     -- arithmetic mode                      ; 18      ;
-;                                             ;         ;
-; Total registers                             ; 30      ;
-;     -- Dedicated logic registers            ; 30      ;
-;     -- I/O registers                        ; 0       ;
-;                                             ;         ;
-; I/O pins                                    ; 7       ;
-; Total memory bits                           ; 128     ;
-; Embedded Multiplier 9-bit elements          ; 0       ;
-; Maximum fan-out node                        ; vga_clk ;
-; Maximum fan-out                             ; 30      ;
-; Total fan-out                               ; 200     ;
-; Average fan-out                             ; 2.22    ;
-+---------------------------------------------+---------+
++-----------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                 ;
++---------------------------------------------+-------------------------------+
+; Resource                                    ; Usage                         ;
++---------------------------------------------+-------------------------------+
+; Estimated Total logic elements              ; 43                            ;
+;                                             ;                               ;
+; Total combinational functions               ; 43                            ;
+; Logic element usage by number of LUT inputs ;                               ;
+;     -- 4 input functions                    ; 12                            ;
+;     -- 3 input functions                    ; 0                             ;
+;     -- <=2 input functions                  ; 31                            ;
+;                                             ;                               ;
+; Logic elements by mode                      ;                               ;
+;     -- normal mode                          ; 25                            ;
+;     -- arithmetic mode                      ; 18                            ;
+;                                             ;                               ;
+; Total registers                             ; 24                            ;
+;     -- Dedicated logic registers            ; 24                            ;
+;     -- I/O registers                        ; 0                             ;
+;                                             ;                               ;
+; I/O pins                                    ; 7                             ;
+; Total memory bits                           ; 128                           ;
+; Embedded Multiplier 9-bit elements          ; 0                             ;
+; Maximum fan-out node                        ; vga_controller:comb_4|vga_clk ;
+; Maximum fan-out                             ; 24                            ;
+; Total fan-out                               ; 186                           ;
+; Average fan-out                             ; 2.27                          ;
++---------------------------------------------+-------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -224,11 +224,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                           ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+--------------+
-; |vga_test                              ; 45 (1)            ; 30 (1)       ; 128         ; 0            ; 0       ; 0         ; 7    ; 0            ; |vga_test                                                     ; work         ;
+; |vga_test                              ; 43 (0)            ; 24 (0)       ; 128         ; 0            ; 0       ; 0         ; 7    ; 0            ; |vga_test                                                     ; work         ;
 ;    |altsyncram:mem_rtl_0|              ; 0 (0)             ; 0 (0)        ; 128         ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|altsyncram:mem_rtl_0                                ; work         ;
 ;       |altsyncram_d871:auto_generated| ; 0 (0)             ; 0 (0)        ; 128         ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|altsyncram:mem_rtl_0|altsyncram_d871:auto_generated ; work         ;
-;    |vga_controller:comb_4|             ; 44 (3)            ; 29 (6)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|vga_controller:comb_4                               ; work         ;
-;       |hvsync:comb_3|                  ; 41 (41)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|vga_controller:comb_4|hvsync:comb_3                 ; work         ;
+;    |vga_controller:comb_4|             ; 43 (2)            ; 24 (1)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|vga_controller:comb_4                               ; work         ;
+;       |hvsync:comb_9|                  ; 41 (41)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|vga_controller:comb_4|hvsync:comb_9                 ; work         ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -257,7 +257,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 30    ;
+; Total registers                              ; 24    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -367,7 +367,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "vga_controller:comb_4|hvsync:comb_3"                                                          ;
+; Port Connectivity Checks: "vga_controller:comb_4|hvsync:comb_9"                                                          ;
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port           ; Type   ; Severity ; Details                                                                             ;
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -391,7 +391,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Feb 04 20:52:05 2021
+    Info: Processing started: Thu Feb 04 21:05:06 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off vga_test -c vga_test
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file vga_test.v
@@ -400,18 +400,14 @@ Info (12021): Found 1 design units, including 1 entities, in source file vga_con
     Info (12023): Found entity 1: vga_controller
 Info (12021): Found 1 design units, including 1 entities, in source file hvsync.v
     Info (12023): Found entity 1: hvsync
-Warning (10236): Verilog HDL Implicit Net warning at vga_controller.v(19): created implicit net for "inDisplayArea_original"
-Critical Warning (10846): Verilog HDL Instantiation warning at vga_controller.v(19): instance has no name
+Critical Warning (10846): Verilog HDL Instantiation warning at vga_controller.v(25): instance has no name
 Critical Warning (10846): Verilog HDL Instantiation warning at vga_test.v(9): instance has no name
 Info (12127): Elaborating entity "vga_test" for the top level hierarchy
-Warning (10030): Net "mem.waddr_a" at vga_test.v(12) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "mem.data_a" at vga_test.v(12) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "mem.we_a" at vga_test.v(12) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "mem.waddr_a" at vga_test.v(14) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "mem.data_a" at vga_test.v(14) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "mem.we_a" at vga_test.v(14) has no driver or initial value, using a default initial value '0'
 Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:comb_4"
-Warning (10036): Verilog HDL or VHDL warning at vga_controller.v(35): object "hsync_delayed3" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at vga_controller.v(38): object "vsync_delayed3" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at vga_controller.v(41): object "inDisplayArea_delayed3" assigned a value but never read
-Info (12128): Elaborating entity "hvsync" for hierarchy "vga_controller:comb_4|hvsync:comb_3"
+Info (12128): Elaborating entity "hvsync" for hierarchy "vga_controller:comb_4|hvsync:comb_9"
 Warning (10230): Verilog HDL assignment warning at hvsync.v(19): truncated value with size 32 to match size of target (10)
 Warning (10230): Verilog HDL assignment warning at hvsync.v(28): truncated value with size 32 to match size of target (10)
 Info (19000): Inferred 1 megafunctions from design logic
@@ -451,14 +447,14 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17036): Removed 6 MSB VCC or GND address nodes from RAM block "altsyncram:mem_rtl_0|altsyncram_d871:auto_generated|ALTSYNCRAM"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 57 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 51 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 5 output pins
-    Info (21061): Implemented 49 logic cells
+    Info (21061): Implemented 43 logic cells
     Info (21064): Implemented 1 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 15 warnings
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 11 warnings
     Info: Peak virtual memory: 4637 megabytes
-    Info: Processing ended: Thu Feb 04 20:52:07 2021
+    Info: Processing ended: Thu Feb 04 21:05:08 2021
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
