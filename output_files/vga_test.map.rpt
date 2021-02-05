@@ -1,5 +1,5 @@
 Analysis & Synthesis report for vga_test
-Thu Feb 04 21:05:08 2021
+Sat Feb 06 02:50:41 2021
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -16,13 +16,15 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   8. Analysis & Synthesis RAM Summary
   9. Registers Removed During Synthesis
  10. General Register Statistics
- 11. Registers Packed Into Inferred Megafunctions
- 12. Source assignments for altsyncram:mem_rtl_0|altsyncram_d871:auto_generated
- 13. Parameter Settings for Inferred Entity Instance: altsyncram:mem_rtl_0
- 14. altsyncram Parameter Settings by Entity Instance
- 15. Port Connectivity Checks: "vga_controller:comb_4|hvsync:comb_9"
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
+ 11. Registers Added for RAM Pass-Through Logic
+ 12. Registers Packed Into Inferred Megafunctions
+ 13. Source assignments for RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated
+ 14. Parameter Settings for Inferred Entity Instance: RAM:comb_22|altsyncram:ram_rtl_0
+ 15. altsyncram Parameter Settings by Entity Instance
+ 16. Port Connectivity Checks: "RAM:comb_22"
+ 17. Port Connectivity Checks: "vga_controller:comb_4"
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
 
 
 
@@ -48,18 +50,18 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Feb 04 21:05:08 2021      ;
+; Analysis & Synthesis Status        ; Successful - Sat Feb 06 02:50:41 2021      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; vga_test                                   ;
 ; Top-level Entity Name              ; vga_test                                   ;
 ; Family                             ; Cyclone IV E                               ;
 ; Total logic elements               ; 43                                         ;
-;     Total combinational functions  ; 43                                         ;
-;     Dedicated logic registers      ; 24                                         ;
-; Total registers                    ; 24                                         ;
-; Total pins                         ; 7                                          ;
+;     Total combinational functions  ; 41                                         ;
+;     Dedicated logic registers      ; 25                                         ;
+; Total registers                    ; 25                                         ;
+; Total pins                         ; 53                                         ;
 ; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 128                                        ;
+; Total memory bits                  ; 4,096                                      ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
 ; Total PLLs                         ; 0                                          ;
 +------------------------------------+--------------------------------------------+
@@ -163,29 +165,27 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                        ;
-+--------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path           ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                 ; Library ;
-+--------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------+---------+
-; vga_test.v                                 ; yes             ; User Verilog HDL File                                 ; C:/Users/Nycrera/Desktop/vga_test/vga_test.v                                 ;         ;
-; vga_controller.v                           ; yes             ; User Verilog HDL File                                 ; C:/Users/Nycrera/Desktop/vga_test/vga_controller.v                           ;         ;
-; hvsync.v                                   ; yes             ; User Verilog HDL File                                 ; C:/Users/Nycrera/Desktop/vga_test/hvsync.v                                   ;         ;
-; glyph.b                                    ; yes             ; Auto-Found Unspecified File                           ; C:/Users/Nycrera/Desktop/vga_test/glyph.b                                    ;         ;
-; altsyncram.tdf                             ; yes             ; Megafunction                                          ; d:/altera/13.1/quartus/libraries/megafunctions/altsyncram.tdf                ;         ;
-; stratix_ram_block.inc                      ; yes             ; Megafunction                                          ; d:/altera/13.1/quartus/libraries/megafunctions/stratix_ram_block.inc         ;         ;
-; lpm_mux.inc                                ; yes             ; Megafunction                                          ; d:/altera/13.1/quartus/libraries/megafunctions/lpm_mux.inc                   ;         ;
-; lpm_decode.inc                             ; yes             ; Megafunction                                          ; d:/altera/13.1/quartus/libraries/megafunctions/lpm_decode.inc                ;         ;
-; aglobal131.inc                             ; yes             ; Megafunction                                          ; d:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc                ;         ;
-; a_rdenreg.inc                              ; yes             ; Megafunction                                          ; d:/altera/13.1/quartus/libraries/megafunctions/a_rdenreg.inc                 ;         ;
-; altrom.inc                                 ; yes             ; Megafunction                                          ; d:/altera/13.1/quartus/libraries/megafunctions/altrom.inc                    ;         ;
-; altram.inc                                 ; yes             ; Megafunction                                          ; d:/altera/13.1/quartus/libraries/megafunctions/altram.inc                    ;         ;
-; altdpram.inc                               ; yes             ; Megafunction                                          ; d:/altera/13.1/quartus/libraries/megafunctions/altdpram.inc                  ;         ;
-; db/altsyncram_d871.tdf                     ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Nycrera/Desktop/vga_test/db/altsyncram_d871.tdf                     ;         ;
-; db/vga_test.ram0_vga_test_71fa7413.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/Nycrera/Desktop/vga_test/db/vga_test.ram0_vga_test_71fa7413.hdl.mif ;         ;
-; db/decode_c8a.tdf                          ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Nycrera/Desktop/vga_test/db/decode_c8a.tdf                          ;         ;
-; db/mux_smb.tdf                             ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Nycrera/Desktop/vga_test/db/mux_smb.tdf                             ;         ;
-+--------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                             ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                         ; Library ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
+; vga_test.v                       ; yes             ; User Verilog HDL File        ; C:/Users/Nycrera/Desktop/vga_test/vga_test.v                         ;         ;
+; vga_controller.v                 ; yes             ; User Verilog HDL File        ; C:/Users/Nycrera/Desktop/vga_test/vga_controller.v                   ;         ;
+; hvsync.v                         ; yes             ; User Verilog HDL File        ; C:/Users/Nycrera/Desktop/vga_test/hvsync.v                           ;         ;
+; RAM.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Nycrera/Desktop/vga_test/RAM.v                              ;         ;
+; glyph.b                          ; yes             ; Auto-Found Unspecified File  ; C:/Users/Nycrera/Desktop/vga_test/glyph.b                            ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; d:/altera/13.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; d:/altera/13.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; d:/altera/13.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; d:/altera/13.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal131.inc                   ; yes             ; Megafunction                 ; d:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; d:/altera/13.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; d:/altera/13.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; d:/altera/13.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; d:/altera/13.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_emc1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/Nycrera/Desktop/vga_test/db/altsyncram_emc1.tdf             ;         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------------------------+
@@ -195,61 +195,64 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------------------------------+
 ; Estimated Total logic elements              ; 43                            ;
 ;                                             ;                               ;
-; Total combinational functions               ; 43                            ;
+; Total combinational functions               ; 41                            ;
 ; Logic element usage by number of LUT inputs ;                               ;
-;     -- 4 input functions                    ; 12                            ;
-;     -- 3 input functions                    ; 0                             ;
-;     -- <=2 input functions                  ; 31                            ;
+;     -- 4 input functions                    ; 11                            ;
+;     -- 3 input functions                    ; 1                             ;
+;     -- <=2 input functions                  ; 29                            ;
 ;                                             ;                               ;
 ; Logic elements by mode                      ;                               ;
-;     -- normal mode                          ; 25                            ;
+;     -- normal mode                          ; 23                            ;
 ;     -- arithmetic mode                      ; 18                            ;
 ;                                             ;                               ;
-; Total registers                             ; 24                            ;
-;     -- Dedicated logic registers            ; 24                            ;
+; Total registers                             ; 25                            ;
+;     -- Dedicated logic registers            ; 25                            ;
 ;     -- I/O registers                        ; 0                             ;
 ;                                             ;                               ;
-; I/O pins                                    ; 7                             ;
-; Total memory bits                           ; 128                           ;
+; I/O pins                                    ; 53                            ;
+; Total memory bits                           ; 4096                          ;
 ; Embedded Multiplier 9-bit elements          ; 0                             ;
 ; Maximum fan-out node                        ; vga_controller:comb_4|vga_clk ;
-; Maximum fan-out                             ; 24                            ;
-; Total fan-out                               ; 186                           ;
-; Average fan-out                             ; 2.27                          ;
+; Maximum fan-out                             ; 23                            ;
+; Total fan-out                               ; 234                           ;
+; Average fan-out                             ; 1.35                          ;
 +---------------------------------------------+-------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                               ;
-+----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                           ; Library Name ;
-+----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+--------------+
-; |vga_test                              ; 43 (0)            ; 24 (0)       ; 128         ; 0            ; 0       ; 0         ; 7    ; 0            ; |vga_test                                                     ; work         ;
-;    |altsyncram:mem_rtl_0|              ; 0 (0)             ; 0 (0)        ; 128         ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|altsyncram:mem_rtl_0                                ; work         ;
-;       |altsyncram_d871:auto_generated| ; 0 (0)             ; 0 (0)        ; 128         ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|altsyncram:mem_rtl_0|altsyncram_d871:auto_generated ; work         ;
-;    |vga_controller:comb_4|             ; 43 (2)            ; 24 (1)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|vga_controller:comb_4                               ; work         ;
-;       |hvsync:comb_9|                  ; 41 (41)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|vga_controller:comb_4|hvsync:comb_9                 ; work         ;
-+----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                              ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                       ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------+--------------+
+; |vga_test                                 ; 41 (0)            ; 25 (0)       ; 4096        ; 0            ; 0       ; 0         ; 53   ; 0            ; |vga_test                                                                 ; work         ;
+;    |RAM:comb_22|                          ; 1 (1)             ; 2 (2)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|RAM:comb_22                                                     ; work         ;
+;       |altsyncram:ram_rtl_0|              ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|RAM:comb_22|altsyncram:ram_rtl_0                                ; work         ;
+;          |altsyncram_emc1:auto_generated| ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated ; work         ;
+;    |vga_controller:comb_4|                ; 40 (1)            ; 23 (1)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|vga_controller:comb_4                                           ; work         ;
+;       |hvsync:comb_9|                     ; 39 (39)           ; 22 (22)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_test|vga_controller:comb_4|hvsync:comb_9                             ; work         ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                              ;
-+----------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+--------------------------------------------+
-; Name                                                           ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF                                        ;
-+----------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+--------------------------------------------+
-; altsyncram:mem_rtl_0|altsyncram_d871:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 16384        ; 1            ; --           ; --           ; 16384 ; db/vga_test.ram0_vga_test_71fa7413.hdl.mif ;
-+----------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+--------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                 ;
++----------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+; Name                                                                       ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF  ;
++----------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+; RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 4096         ; 32           ; 4096         ; 32           ; 131072 ; None ;
++----------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
 
 
-+---------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                            ;
-+----------------------------------------------------------------------+----------------------------------------+
-; Register name                                                        ; Reason for Removal                     ;
-+----------------------------------------------------------------------+----------------------------------------+
-; altsyncram:mem_rtl_0|altsyncram_d871:auto_generated|address_reg_a[0] ; Stuck at VCC due to stuck port data_in ;
-; Total Number of Removed Registers = 1                                ;                                        ;
-+----------------------------------------------------------------------+----------------------------------------+
++------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                     ;
++---------------------------------------------------+--------------------+
+; Register name                                     ; Reason for Removal ;
++---------------------------------------------------+--------------------+
+; vga_controller:comb_4|hvsync:comb_9|inDisplayArea ; Lost fanout        ;
+; ROMOut                                            ; Lost fanout        ;
+; RAM:comb_22|ram_rtl_0_bypass[2..32]               ; Lost fanout        ;
+; Total Number of Removed Registers = 33            ;                    ;
++---------------------------------------------------+--------------------+
 
 
 +------------------------------------------------------+
@@ -257,7 +260,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 24    ;
+; Total registers                              ; 25    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -267,113 +270,163 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------+
-; Registers Packed Into Inferred Megafunctions ;
-+---------------+--------------+---------------+
-; Register Name ; Megafunction ; Type          ;
-+---------------+--------------+---------------+
-; data          ; mem_rtl_0    ; RAM           ;
-+---------------+--------------+---------------+
++----------------------------------------------------------+
+; Registers Added for RAM Pass-Through Logic               ;
++----------------------------------+-----------------------+
+; Register Name                    ; RAM Name              ;
++----------------------------------+-----------------------+
+; RAM:comb_22|ram_rtl_0_bypass[0]  ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[1]  ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[2]  ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[3]  ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[4]  ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[5]  ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[6]  ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[7]  ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[8]  ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[9]  ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[10] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[11] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[12] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[13] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[14] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[15] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[16] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[17] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[18] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[19] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[20] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[21] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[22] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[23] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[24] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[25] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[26] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[27] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[28] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[29] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[30] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[31] ; RAM:comb_22|ram_rtl_0 ;
+; RAM:comb_22|ram_rtl_0_bypass[32] ; RAM:comb_22|ram_rtl_0 ;
++----------------------------------+-----------------------+
 
 
-+----------------------------------------------------------------------------+
-; Source assignments for altsyncram:mem_rtl_0|altsyncram_d871:auto_generated ;
-+---------------------------------+--------------------+------+--------------+
-; Assignment                      ; Value              ; From ; To           ;
-+---------------------------------+--------------------+------+--------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -            ;
-+---------------------------------+--------------------+------+--------------+
++---------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions      ;
++--------------------+-----------------------+------+
+; Register Name      ; Megafunction          ; Type ;
++--------------------+-----------------------+------+
+; RAM:comb_22|q_b[0] ; RAM:comb_22|ram_rtl_0 ; RAM  ;
++--------------------+-----------------------+------+
 
 
-+--------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: altsyncram:mem_rtl_0                            ;
-+------------------------------------+--------------------------------------------+----------------+
-; Parameter Name                     ; Value                                      ; Type           ;
-+------------------------------------+--------------------------------------------+----------------+
-; BYTE_SIZE_BLOCK                    ; 8                                          ; Untyped        ;
-; AUTO_CARRY_CHAINS                  ; ON                                         ; AUTO_CARRY     ;
-; IGNORE_CARRY_BUFFERS               ; OFF                                        ; IGNORE_CARRY   ;
-; AUTO_CASCADE_CHAINS                ; ON                                         ; AUTO_CASCADE   ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                                        ; IGNORE_CASCADE ;
-; WIDTH_BYTEENA                      ; 1                                          ; Untyped        ;
-; OPERATION_MODE                     ; ROM                                        ; Untyped        ;
-; WIDTH_A                            ; 1                                          ; Untyped        ;
-; WIDTHAD_A                          ; 14                                         ; Untyped        ;
-; NUMWORDS_A                         ; 16384                                      ; Untyped        ;
-; OUTDATA_REG_A                      ; UNREGISTERED                               ; Untyped        ;
-; ADDRESS_ACLR_A                     ; NONE                                       ; Untyped        ;
-; OUTDATA_ACLR_A                     ; NONE                                       ; Untyped        ;
-; WRCONTROL_ACLR_A                   ; NONE                                       ; Untyped        ;
-; INDATA_ACLR_A                      ; NONE                                       ; Untyped        ;
-; BYTEENA_ACLR_A                     ; NONE                                       ; Untyped        ;
-; WIDTH_B                            ; 1                                          ; Untyped        ;
-; WIDTHAD_B                          ; 1                                          ; Untyped        ;
-; NUMWORDS_B                         ; 1                                          ; Untyped        ;
-; INDATA_REG_B                       ; CLOCK1                                     ; Untyped        ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                     ; Untyped        ;
-; RDCONTROL_REG_B                    ; CLOCK1                                     ; Untyped        ;
-; ADDRESS_REG_B                      ; CLOCK1                                     ; Untyped        ;
-; OUTDATA_REG_B                      ; UNREGISTERED                               ; Untyped        ;
-; BYTEENA_REG_B                      ; CLOCK1                                     ; Untyped        ;
-; INDATA_ACLR_B                      ; NONE                                       ; Untyped        ;
-; WRCONTROL_ACLR_B                   ; NONE                                       ; Untyped        ;
-; ADDRESS_ACLR_B                     ; NONE                                       ; Untyped        ;
-; OUTDATA_ACLR_B                     ; NONE                                       ; Untyped        ;
-; RDCONTROL_ACLR_B                   ; NONE                                       ; Untyped        ;
-; BYTEENA_ACLR_B                     ; NONE                                       ; Untyped        ;
-; WIDTH_BYTEENA_A                    ; 1                                          ; Untyped        ;
-; WIDTH_BYTEENA_B                    ; 1                                          ; Untyped        ;
-; RAM_BLOCK_TYPE                     ; AUTO                                       ; Untyped        ;
-; BYTE_SIZE                          ; 8                                          ; Untyped        ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                  ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                       ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                       ; Untyped        ;
-; INIT_FILE                          ; db/vga_test.ram0_vga_test_71fa7413.hdl.mif ; Untyped        ;
-; INIT_FILE_LAYOUT                   ; PORT_A                                     ; Untyped        ;
-; MAXIMUM_DEPTH                      ; 0                                          ; Untyped        ;
-; CLOCK_ENABLE_INPUT_A               ; NORMAL                                     ; Untyped        ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL                                     ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                     ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                     ; Untyped        ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                            ; Untyped        ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                            ; Untyped        ;
-; ENABLE_ECC                         ; FALSE                                      ; Untyped        ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                      ; Untyped        ;
-; WIDTH_ECCSTATUS                    ; 3                                          ; Untyped        ;
-; DEVICE_FAMILY                      ; Cyclone IV E                               ; Untyped        ;
-; CBXI_PARAMETER                     ; altsyncram_d871                            ; Untyped        ;
-+------------------------------------+--------------------------------------------+----------------+
++----------------------------------------------------------------------------------------+
+; Source assignments for RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated ;
++---------------------------------+--------------------+------+--------------------------+
+; Assignment                      ; Value              ; From ; To                       ;
++---------------------------------+--------------------+------+--------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                        ;
++---------------------------------+--------------------+------+--------------------------+
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: RAM:comb_22|altsyncram:ram_rtl_0 ;
++------------------------------------+----------------------+-----------------------+
+; Parameter Name                     ; Value                ; Type                  ;
++------------------------------------+----------------------+-----------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped               ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY            ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY          ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE          ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE        ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped               ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped               ;
+; WIDTH_A                            ; 32                   ; Untyped               ;
+; WIDTHAD_A                          ; 12                   ; Untyped               ;
+; NUMWORDS_A                         ; 4096                 ; Untyped               ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped               ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped               ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped               ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped               ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped               ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped               ;
+; WIDTH_B                            ; 32                   ; Untyped               ;
+; WIDTHAD_B                          ; 12                   ; Untyped               ;
+; NUMWORDS_B                         ; 4096                 ; Untyped               ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped               ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped               ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped               ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped               ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped               ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped               ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped               ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped               ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped               ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped               ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped               ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped               ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped               ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped               ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped               ;
+; BYTE_SIZE                          ; 8                    ; Untyped               ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped               ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped               ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped               ;
+; INIT_FILE                          ; UNUSED               ; Untyped               ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped               ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped               ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped               ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped               ;
+; ENABLE_ECC                         ; FALSE                ; Untyped               ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped               ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped               ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped               ;
+; CBXI_PARAMETER                     ; altsyncram_emc1      ; Untyped               ;
++------------------------------------+----------------------+-----------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------+
-; altsyncram Parameter Settings by Entity Instance                 ;
-+-------------------------------------------+----------------------+
-; Name                                      ; Value                ;
-+-------------------------------------------+----------------------+
-; Number of entity instances                ; 1                    ;
-; Entity Instance                           ; altsyncram:mem_rtl_0 ;
-;     -- OPERATION_MODE                     ; ROM                  ;
-;     -- WIDTH_A                            ; 1                    ;
-;     -- NUMWORDS_A                         ; 16384                ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED         ;
-;     -- WIDTH_B                            ; 1                    ;
-;     -- NUMWORDS_B                         ; 1                    ;
-;     -- ADDRESS_REG_B                      ; CLOCK1               ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED         ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                 ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ;
-+-------------------------------------------+----------------------+
++------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                             ;
++-------------------------------------------+----------------------------------+
+; Name                                      ; Value                            ;
++-------------------------------------------+----------------------------------+
+; Number of entity instances                ; 1                                ;
+; Entity Instance                           ; RAM:comb_22|altsyncram:ram_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                        ;
+;     -- WIDTH_A                            ; 32                               ;
+;     -- NUMWORDS_A                         ; 4096                             ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                     ;
+;     -- WIDTH_B                            ; 32                               ;
+;     -- NUMWORDS_B                         ; 4096                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                           ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                     ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                             ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                        ;
++-------------------------------------------+----------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "vga_controller:comb_4|hvsync:comb_9"                                                          ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port           ; Type   ; Severity ; Details                                                                             ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; CounterX[9..3] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; CounterY[9..4] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "RAM:comb_22"                                                                                                             ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                  ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; q_a  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                      ;
+; q_b  ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (1 bits) it drives; bit(s) "q_b[31..1]" have no fanouts ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "vga_controller:comb_4"                                                                                                                            ;
++--------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                                                                                          ;
++--------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; RAMOut ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "RAMOut[31..1]" will be connected to GND. ;
++--------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -381,7 +434,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -391,7 +444,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Feb 04 21:05:06 2021
+    Info: Processing started: Sat Feb 06 02:50:36 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off vga_test -c vga_test
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file vga_test.v
@@ -400,62 +453,142 @@ Info (12021): Found 1 design units, including 1 entities, in source file vga_con
     Info (12023): Found entity 1: vga_controller
 Info (12021): Found 1 design units, including 1 entities, in source file hvsync.v
     Info (12023): Found entity 1: hvsync
-Critical Warning (10846): Verilog HDL Instantiation warning at vga_controller.v(25): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at vga_test.v(9): instance has no name
+Info (12021): Found 1 design units, including 1 entities, in source file ram.v
+    Info (12023): Found entity 1: RAM
+Warning (10236): Verilog HDL Implicit Net warning at vga_test.v(13): created implicit net for "RAmOut"
+Critical Warning (10846): Verilog HDL Instantiation warning at vga_controller.v(27): instance has no name
+Critical Warning (10846): Verilog HDL Instantiation warning at vga_test.v(13): instance has no name
+Critical Warning (10846): Verilog HDL Instantiation warning at vga_test.v(34): instance has no name
 Info (12127): Elaborating entity "vga_test" for the top level hierarchy
-Warning (10030): Net "mem.waddr_a" at vga_test.v(14) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "mem.data_a" at vga_test.v(14) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "mem.we_a" at vga_test.v(14) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "ROM.waddr_a" at vga_test.v(18) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "ROM.data_a" at vga_test.v(18) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "ROM.we_a" at vga_test.v(18) has no driver or initial value, using a default initial value '0'
 Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:comb_4"
+Warning (10230): Verilog HDL assignment warning at vga_controller.v(38): truncated value with size 32 to match size of target (12)
 Info (12128): Elaborating entity "hvsync" for hierarchy "vga_controller:comb_4|hvsync:comb_9"
 Warning (10230): Verilog HDL assignment warning at hvsync.v(19): truncated value with size 32 to match size of target (10)
 Warning (10230): Verilog HDL assignment warning at hvsync.v(28): truncated value with size 32 to match size of target (10)
+Info (12128): Elaborating entity "RAM" for hierarchy "RAM:comb_22"
+Warning (276020): Inferred RAM node "RAM:comb_22|ram_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "RAM:comb_22|ram" is uninferred due to asynchronous read logic
 Info (19000): Inferred 1 megafunctions from design logic
-    Info (276029): Inferred altsyncram megafunction from the following design logic: "mem_rtl_0" 
-        Info (286033): Parameter OPERATION_MODE set to ROM
-        Info (286033): Parameter WIDTH_A set to 1
-        Info (286033): Parameter WIDTHAD_A set to 14
-        Info (286033): Parameter NUMWORDS_A set to 16384
-        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "RAM:comb_22|ram_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 12
+        Info (286033): Parameter NUMWORDS_A set to 4096
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 12
+        Info (286033): Parameter NUMWORDS_B set to 4096
         Info (286033): Parameter ADDRESS_ACLR_A set to NONE
-        Info (286033): Parameter OUTDATA_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
         Info (286033): Parameter INDATA_ACLR_A set to NONE
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
-        Info (286033): Parameter INIT_FILE set to db/vga_test.ram0_vga_test_71fa7413.hdl.mif
-Info (12130): Elaborated megafunction instantiation "altsyncram:mem_rtl_0"
-Info (12133): Instantiated megafunction "altsyncram:mem_rtl_0" with the following parameter:
-    Info (12134): Parameter "OPERATION_MODE" = "ROM"
-    Info (12134): Parameter "WIDTH_A" = "1"
-    Info (12134): Parameter "WIDTHAD_A" = "14"
-    Info (12134): Parameter "NUMWORDS_A" = "16384"
-    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+Info (12130): Elaborated megafunction instantiation "RAM:comb_22|altsyncram:ram_rtl_0"
+Info (12133): Instantiated megafunction "RAM:comb_22|altsyncram:ram_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "12"
+    Info (12134): Parameter "NUMWORDS_A" = "4096"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "12"
+    Info (12134): Parameter "NUMWORDS_B" = "4096"
     Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
-    Info (12134): Parameter "OUTDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
     Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
-    Info (12134): Parameter "INIT_FILE" = "db/vga_test.ram0_vga_test_71fa7413.hdl.mif"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_d871.tdf
-    Info (12023): Found entity 1: altsyncram_d871
-Info (12021): Found 1 design units, including 1 entities, in source file db/decode_c8a.tdf
-    Info (12023): Found entity 1: decode_c8a
-Info (12021): Found 1 design units, including 1 entities, in source file db/mux_smb.tdf
-    Info (12023): Found entity 1: mux_smb
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_emc1.tdf
+    Info (12023): Found entity 1: altsyncram_emc1
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "altsyncram:mem_rtl_0|altsyncram_d871:auto_generated|ram_block1a0"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a1"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a2"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a3"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a4"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a5"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a6"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a7"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a8"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a9"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a10"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a11"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a12"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a13"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a14"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a15"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a16"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a17"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a18"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a19"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a20"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a21"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a22"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a23"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a24"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a25"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a26"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a27"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a28"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a29"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a30"
+        Warning (14320): Synthesized away node "RAM:comb_22|altsyncram:ram_rtl_0|altsyncram_emc1:auto_generated|ram_block1a31"
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "rgbOut[0]" is stuck at GND
+    Warning (13410): Pin "rgbOut[1]" is stuck at GND
+    Warning (13410): Pin "rgbOut[2]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17036): Removed 6 MSB VCC or GND address nodes from RAM block "altsyncram:mem_rtl_0|altsyncram_d871:auto_generated|ALTSYNCRAM"
+Info (17049): 33 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 51 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 5 output pins
+Warning (21074): Design contains 31 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "data_b[1]"
+    Warning (15610): No output dependent on input pin "data_b[2]"
+    Warning (15610): No output dependent on input pin "data_b[3]"
+    Warning (15610): No output dependent on input pin "data_b[4]"
+    Warning (15610): No output dependent on input pin "data_b[5]"
+    Warning (15610): No output dependent on input pin "data_b[6]"
+    Warning (15610): No output dependent on input pin "data_b[7]"
+    Warning (15610): No output dependent on input pin "data_b[8]"
+    Warning (15610): No output dependent on input pin "data_b[9]"
+    Warning (15610): No output dependent on input pin "data_b[10]"
+    Warning (15610): No output dependent on input pin "data_b[11]"
+    Warning (15610): No output dependent on input pin "data_b[12]"
+    Warning (15610): No output dependent on input pin "data_b[13]"
+    Warning (15610): No output dependent on input pin "data_b[14]"
+    Warning (15610): No output dependent on input pin "data_b[15]"
+    Warning (15610): No output dependent on input pin "data_b[16]"
+    Warning (15610): No output dependent on input pin "data_b[17]"
+    Warning (15610): No output dependent on input pin "data_b[18]"
+    Warning (15610): No output dependent on input pin "data_b[19]"
+    Warning (15610): No output dependent on input pin "data_b[20]"
+    Warning (15610): No output dependent on input pin "data_b[21]"
+    Warning (15610): No output dependent on input pin "data_b[22]"
+    Warning (15610): No output dependent on input pin "data_b[23]"
+    Warning (15610): No output dependent on input pin "data_b[24]"
+    Warning (15610): No output dependent on input pin "data_b[25]"
+    Warning (15610): No output dependent on input pin "data_b[26]"
+    Warning (15610): No output dependent on input pin "data_b[27]"
+    Warning (15610): No output dependent on input pin "data_b[28]"
+    Warning (15610): No output dependent on input pin "data_b[29]"
+    Warning (15610): No output dependent on input pin "data_b[30]"
+    Warning (15610): No output dependent on input pin "data_b[31]"
+Info (21057): Implemented 97 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 47 input pins
+    Info (21059): Implemented 6 output pins
     Info (21061): Implemented 43 logic cells
     Info (21064): Implemented 1 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 4637 megabytes
-    Info: Processing ended: Thu Feb 04 21:05:08 2021
-    Info: Elapsed time: 00:00:02
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 82 warnings
+    Info: Peak virtual memory: 4625 megabytes
+    Info: Processing ended: Sat Feb 06 02:50:41 2021
+    Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:01
 
 

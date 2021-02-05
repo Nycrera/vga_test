@@ -3,75 +3,75 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'vga_controller:comb_4|vga_clk'
-Slack : -2.355
-TNS   : -41.741
+Slack : -2.292
+TNS   : -40.879
 
 Type  : Slow 1200mV 85C Model Setup 'clk'
-Slack : -0.700
-TNS   : -0.716
+Slack : -0.045
+TNS   : -0.045
 
 Type  : Slow 1200mV 85C Model Hold 'clk'
-Slack : -0.123
-TNS   : -0.123
+Slack : -0.108
+TNS   : -0.108
 
 Type  : Slow 1200mV 85C Model Hold 'vga_controller:comb_4|vga_clk'
-Slack : 0.679
+Slack : 0.653
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
 Slack : -3.201
-TNS   : -7.688
+TNS   : -20.265
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'vga_controller:comb_4|vga_clk'
 Slack : -1.487
-TNS   : -34.201
+TNS   : -32.714
 
 Type  : Slow 1200mV 0C Model Setup 'vga_controller:comb_4|vga_clk'
-Slack : -2.092
-TNS   : -36.525
+Slack : -2.095
+TNS   : -36.215
 
 Type  : Slow 1200mV 0C Model Setup 'clk'
-Slack : -0.645
-TNS   : -0.666
+Slack : -0.035
+TNS   : -0.035
 
 Type  : Slow 1200mV 0C Model Hold 'clk'
-Slack : -0.101
-TNS   : -0.101
+Slack : -0.075
+TNS   : -0.075
 
 Type  : Slow 1200mV 0C Model Hold 'vga_controller:comb_4|vga_clk'
-Slack : 0.630
+Slack : 0.604
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.201
-TNS   : -7.688
+TNS   : -20.265
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'vga_controller:comb_4|vga_clk'
 Slack : -1.487
-TNS   : -34.201
+TNS   : -32.714
 
 Type  : Fast 1200mV 0C Model Setup 'vga_controller:comb_4|vga_clk'
-Slack : -0.447
-TNS   : -5.212
+Slack : -0.434
+TNS   : -5.721
 
 Type  : Fast 1200mV 0C Model Setup 'clk'
-Slack : 0.226
+Slack : 0.350
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clk'
-Slack : -0.145
-TNS   : -0.145
+Slack : -0.158
+TNS   : -0.158
 
 Type  : Fast 1200mV 0C Model Hold 'vga_controller:comb_4|vga_clk'
-Slack : 0.279
+Slack : 0.264
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -5.192
+TNS   : -10.697
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'vga_controller:comb_4|vga_clk'
 Slack : -1.000
-TNS   : -23.000
+TNS   : -22.000
 
 ------------------------------------------------------------
