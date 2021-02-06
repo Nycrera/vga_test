@@ -30,14 +30,16 @@ module vga_controller(
 	 wire [7:0] asciiData;
 	 wire [2:0] colorF;
 	 wire [2:0] colorB;
+	 wire [11:0] RAMAddr_NoParse;
 	 
-	 assign asciiData = RAMAddr[0] ? RAMOut[31:24] : RAMOut[17:10];
-	 assign colorF = RAMAddr[0] ? RAMOut[23:21] : RAMOut[9:7];
-	 assign colorB = RAMAddr[0] ? RAMOut[20:18] : RAMOut[6:4]; // 4 bit unused for now...
+	 assign asciiData = RAMAddr_NoParse[0] ? RAMOut[31:24] : RAMOut[17:10];
+	 assign colorF = RAMAddr_NoParse[0] ? RAMOut[23:21] : RAMOut[9:7];
+	 assign colorB = RAMAddr_NoParse[0] ? RAMOut[20:18] : RAMOut[6:4]; // 4 bit unused for now...
 	 
-	 assign RAMAddr = {5'b00000, PosX[9:3]} + ({6'b000000, PosY[9:4]} * 80);// (PosX / 8) + (PosY / 16) * 80 Text Indexing
+	 assign RAMAddr_NoParse = {5'b00000, PosX[9:3]} + ({6'b000000, PosY[9:4]} * 80);// (PosX / 8) + (PosY / 16) * 80 Text Indexing
+	 assign RAMAddr = (RAMAddr_NoParse[11:0] >> 1);
 	 
-	 assign ROMAddr = asciiData[7:0] + PosX[2:0] + {PosY[3:0], 3'b000}; // Text Pixel Indexing
+	 assign ROMAddr = {asciiData[6:0], 7'b0000000 } + PosX[2:0] + {PosY[3:0], 3'b000}; // Text Pixel Indexing
 	 
 	 assign rgbOut[0] = ROMOut ? (colorF[0] & inDisplayArea) : (colorB[0] & inDisplayArea);
 	 assign rgbOut[1] = ROMOut ? (colorF[1] & inDisplayArea) : (colorB[1] & inDisplayArea);
