@@ -24,7 +24,9 @@ module vga_controller(
 		vga_clk <= ~vga_clk;	
 	 end
 	 
-	 hvsync(vga_clk,vga_hsync,vga_vsync,inDisplayArea,PosX,PosY);
+	 wire vga_hsync_orig,vga_vsync_orig,inDisplayArea_orig;
+	 
+	 hvsync(vga_clk,vga_hsync_orig,vga_vsync_orig,inDisplayArea_orig,PosX,PosY);
 	 
 	 // Drawing Logic goes here
 	 wire [7:0] asciiData;
@@ -37,12 +39,44 @@ module vga_controller(
 	 assign colorB = RAMAddr_NoParse[0] ? RAMOut[20:18] : RAMOut[6:4]; // 4 bit unused for now...
 	 
 	 assign RAMAddr_NoParse = {5'b00000, PosX[9:3]} + ({6'b000000, PosY[9:4]} * 80);// (PosX / 8) + (PosY / 16) * 80 Text Indexing
-	 assign RAMAddr = (RAMAddr_NoParse[11:0] >> 1);
+	 assign RAMAddr = {1'b0, RAMAddr_NoParse[11:1]};// RAMAddr_NoParse >> 1
 	 
-	 assign ROMAddr = {asciiData[6:0], 7'b0000000 } + PosX[2:0] + {PosY[3:0], 3'b000}; // Text Pixel Indexing
+	 reg [2:0] CharX;
+	 reg [3:0] CharY;
+	 always @ (posedge clk) //adds 1 clock delay to sync, compensating the RAM delay.
+	 begin
+	 CharX <= PosX[2:0];
+	 CharY <= PosY[3:0];
+	 end
+	 
+	 assign ROMAddr = {asciiData[6:0], 7'b0000000 } + CharX[2:0] + {CharY[3:0], 3'b000}; // Text Pixel Indexing
 	 
 	 assign rgbOut[0] = ROMOut ? (colorF[0] & inDisplayArea) : (colorB[0] & inDisplayArea);
 	 assign rgbOut[1] = ROMOut ? (colorF[1] & inDisplayArea) : (colorB[1] & inDisplayArea);
 	 assign rgbOut[2] = ROMOut ? (colorF[2] & inDisplayArea) : (colorB[2] & inDisplayArea);
 
+	 
+	 reg hsync_delayed1,hsync_delayed2,hsync_delayed3;
+	 reg vsync_delayed1,vsync_delayed2,vsync_delayed3;
+	 reg inDisplayAreaDelayed1, inDisplayAreaDelayed2;
+	 
+	 
+	 always@(posedge clk) begin
+	hsync_delayed1 <= vga_hsync_orig;
+	hsync_delayed2 <= hsync_delayed1;
+	hsync_delayed3 <= hsync_delayed2;
+	
+	vsync_delayed1 <= vga_vsync_orig;
+	vsync_delayed2 <= vsync_delayed1;
+	vsync_delayed3 <= vsync_delayed2;
+
+	inDisplayAreaDelayed1 <= inDisplayArea_orig;
+	inDisplayAreaDelayed2 <= inDisplayAreaDelayed1;
+	end
+
+	assign vga_hsync = hsync_delayed3;
+	assign vga_vsync = vsync_delayed3;
+	assign inDisplayArea = inDisplayAreaDelayed2;
+	 
+	 
 	 endmodule

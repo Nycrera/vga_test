@@ -17,27 +17,22 @@ addr_b = addr_b + 1;
 end
 */
 
-reg [15:0] counter;
 reg [7:0] dataC;
 reg [11:0] addrC;
+wire [7:0] datacp1;
 
-initial begin
-counter = 0;
-end
+assign datacp1 = dataC[7:0] + 1;
 
 assign addr_b = addrC[11:0];
-assign data_b = {dataC[7:0], 6'b111010, (dataC[7:0] + 1), 10'b1010010000};
+assign data_b = {dataC[7:0], 6'b111010, datacp1[7:0], 10'b1110100000};
 assign we_b = 1;
 
 always @ (posedge clk)
 begin
-	counter <= counter + 1;
 
-	if(counter[15:0] == 16'd0)
-	begin
 	addrC <= addrC + 1;
 	dataC <= dataC + 1;
-	end
+
 end
 
 endmodule
